@@ -1,0 +1,164 @@
+.input-fields{
+    border: 1px solid black;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 150px !important;
+}
+
+.input-fields input{
+    width: 150px !important;
+    padding: 6px;
+    box-sizing: border-box;
+    outline: none;
+    border: 0px solid;
+    background: transparent;
+    text-align: center;
+}
+
+.company-name{
+    margin-bottom: 1rem;
+    color: #f95757;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+/*Prev*/
+
+.container{
+    display: flex;
+    height: 94vh;
+    font-family: sans-serif;
+    width: 94vw;
+}
+
+
+.sidebar{
+    width: 17%;
+    border-right: 1px solid #ddd;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+.activeTab {
+    font-weight: bold;
+    color: #007bff;
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.search {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    border-bottom: 2px solid #ccc;
+    padding: 0.5rem;
+}
+
+td{
+    border-bottom: 1px solid #eee;
+    padding: 0.5rem;
+}
+
+tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+tr:nth-of-type(even) {
+    background-color:#eff5ff;
+}
+
+.place-order-btn{
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    background: #0ecd0e;
+    color: white;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    position: fixed;
+    bottom: 0;
+    width: 73vw;
+}
+
+
+.medicine-list-container{
+    display: flex;
+    flex-direction: column;
+    height: 88vh;
+}
+
+/* search sits at top and never scrolls */
+.search-wrapper {
+    flex: 0 0 auto;
+    background: white;    /* so it covers what's behind when you scroll */
+    z-index: 1;
+}
+
+/* this scrolls; table‐header inside it will stick to its top */
+.table‐wrapper {
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+/* make your table full‐width if you like */
+.table‐wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* stick the THEAD row to the top of .table‐wrapper */
+.table‐wrapper thead th {
+    position: sticky;
+    top: 0;               /* sticks to top of the scrolling container */
+    background: white;    /* cover cells underneath when scrolling */
+    z-index: 1;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #D6EEEE;
+    cursor: pointer;
+}
+
+
+.cart-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-container img{
+    width: 400px;
+}
