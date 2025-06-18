@@ -17,7 +17,7 @@ const ParticularOrderDetailsModal = ({orderDetails, onCloseModal}) => {
 
     return (
         <div id="myModal" className="modal">
-            <div className="modal-content">
+            <div className="stock-view-modal-content">
                 <span className="close" onClick={onCloseModal}>&times;</span>
                 <h2 style={{textAlign: 'center'}}>Order on {new Date(orderDetails.orderDate * 1000)
                     .toLocaleDateString('en-GB', {day: '2-digit', month: '2-digit', year: '2-digit'})}
@@ -25,7 +25,7 @@ const ParticularOrderDetailsModal = ({orderDetails, onCloseModal}) => {
 
                 {Object.keys(orderedStockList).length !== 0 &&
                     <>
-                        <table>
+                        <table className="table-view">
                             <thead>
                             <tr>
                                 <th>Medicine Name</th>

@@ -17,6 +17,9 @@ const tabs = [
 const NonAdminHomePage = () => {
     const [selectedTab, setSelectedTab] = useState('order');
 
+    const [mobileOpen, setMobileOpen] = useState(false)
+
+
     const location = useLocation();
     const { loginDetails } = location.state || {};
     const navigate = useNavigate();
@@ -29,18 +32,39 @@ const NonAdminHomePage = () => {
     return (
         // #f0f5ff
         <div className="container">
-            <aside className="sidebar">
-                <h2 className="company-name" >{loginDetails.companyName}</h2>
+
+            {/* mobile header */}
+            <header className="mobile-header">
+                <button
+                    className="hamburger"
+                    onClick={() => setMobileOpen(open => !open)}
+                >
+                    ☰
+                </button>
+                <h2 className="company-name">{loginDetails.companyName}</h2>
+            </header>
+
+            {/* backdrop: only when menu is open */}
+            {mobileOpen && (
+                <div
+                    className="backdrop"
+                    onClick={() => setMobileOpen(false)}
+                />
+            )}
+
+            <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
+                <h2 className={`company-name ${mobileOpen ? 'hide' : ''}`}>{loginDetails.companyName}</h2>
                 <ul>
                     {tabs.map(tab => (
                         <li
                             key={tab.key}
-                            className={selectedTab === tab.key ? "activeTab" : ""}
+                            className={selectedTab === tab.key ? 'activeTab' : ''}
                             onClick={() => {
                                 setSelectedTab(tab.key)
                                 if (tab.key === 'logout') {
                                     handleLogoutClick();
                                 }
+                                setMobileOpen(false) // auto-close on mobile
                             }}
                         >
                             {tab.label}
@@ -48,6 +72,27 @@ const NonAdminHomePage = () => {
                     ))}
                 </ul>
             </aside>
+
+
+            {/*<aside className="sidebar">*/}
+            {/*    <h2 className="company-name" >{loginDetails.companyName}</h2>*/}
+            {/*    <ul>*/}
+            {/*        {tabs.map(tab => (*/}
+            {/*            <li*/}
+            {/*                key={tab.key}*/}
+            {/*                className={selectedTab === tab.key ? "activeTab" : ""}*/}
+            {/*                onClick={() => {*/}
+            {/*                    setSelectedTab(tab.key)*/}
+            {/*                    if (tab.key === 'logout') {*/}
+            {/*                        handleLogoutClick();*/}
+            {/*                    }*/}
+            {/*                }}*/}
+            {/*            >*/}
+            {/*                {tab.label}*/}
+            {/*            </li>*/}
+            {/*        ))}*/}
+            {/*    </ul>*/}
+            {/*</aside>*/}
 
             <main>
                 {selectedTab === 'order' && <OrderMedicines companyDetails={loginDetails}/>}

@@ -16,7 +16,14 @@ const LandingPage = () => {
         login(companyName, phoneNumber).then((res) => {
             console.log(res);
             if (res.is_admin) {
-                navigate("/admin");
+                navigate("/admin", {
+                    state: {
+                        loginDetails: {
+                            companyName: companyName,
+                            userId: res.id
+                        }
+                    }
+                });
             } else {
                 navigate("/home", {
                     state: {
@@ -46,7 +53,7 @@ const LandingPage = () => {
 
             <div className="body-container">
                 <div className="body-container-hero-details">
-                    <div>
+                    <div className="mobile-adjust-view">
                         <p className="primary-header">Medicine Store</p>
                         <p className="secondary-header">Your Trusted Pharmacy Store</p>
                         <p className="detail">Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit

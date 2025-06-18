@@ -1,7 +1,7 @@
-// const baseUrl = "https://terry.grayriver-3119c2e3.eastus.azurecontainerapps.io";
 import {use} from "react";
 
-const baseUrl = "http://127.0.0.1:5005";
+// const baseUrl = "http://127.0.0.1:5005";
+const baseUrl = "https://api.rishovmedical.co.in";
 
 
 export async function addOrder(user_id, orders) {
@@ -32,7 +32,7 @@ export async function addOrder(user_id, orders) {
 }
 
 export async function getMyOrders(userId) {
-    let url = "http://127.0.0.1:5005/fetch_orders_list" + (userId !== undefined ? `?user_id=${userId}` : '');
+    let url = `${baseUrl}/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -55,7 +55,7 @@ export async function getMyOrders(userId) {
 }
 
 export async function getParticularOrderDetails(order_id) {
-    let url = `http://127.0.0.1:5005/fetch_orders_details?order_id=${order_id}`;
+    let url = `${baseUrl}/fetch_orders_details?order_id=${order_id}`;
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -89,7 +89,7 @@ export async function getParticularOrderDetails(order_id) {
 export async function getStockList() {
 
     console.log("Calling API");
-    let url = `http://127.0.0.1:5005/get_all_stocks`;
+    let url = `${baseUrl}/get_all_stocks`;
     const response = await fetch(url, {
         method: 'GET',
         headers: {

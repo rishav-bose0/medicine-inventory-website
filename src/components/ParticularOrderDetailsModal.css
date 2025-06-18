@@ -2,3 +2,28 @@
     color: red;
     font-weight: 700;
 }
+
+.stock-view-modal-content{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 25px;
+
+
+    @media (max-width: 575px) {
+        width: 80%;
+    }
+
+    @media (min-width: 576px) {
+        width: 55%;
+    }
+}
+
+.table-view{
+    @media (max-width: 575px) {
+        width: 95%;
+        table-layout: fixed;
+        font-size: 12px;
+    }
+}

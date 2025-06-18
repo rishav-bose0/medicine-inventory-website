@@ -70,23 +70,65 @@ const AdminHomePage = () => {
 
     const [selectedTab, setSelectedTab] = useState('orders');
 
+    const [mobileOpen, setMobileOpen] = useState(false)
+
+
     return (
         // #f0f5ff
         <div className="container">
-            <aside className="sidebar">
-                <h2 className="company-name" >Rishov Medical</h2>
+
+            {/* mobile header */}
+            <header className="mobile-header">
+                <button
+                    className="hamburger"
+                    onClick={() => setMobileOpen(open => !open)}
+                >
+                    ☰
+                </button>
+                <h2 className="company-name">Rishov Medical</h2>
+            </header>
+
+            {/* backdrop: only when menu is open */}
+            {mobileOpen && (
+                <div
+                    className="backdrop"
+                    onClick={() => setMobileOpen(false)}
+                />
+            )}
+
+            <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
+                <h2 className={`company-name ${mobileOpen ? 'hide' : ''}`}>Rishov Medical</h2>
                 <ul>
                     {tabs.map(tab => (
                         <li
                             key={tab.key}
-                            className={selectedTab === tab.key ? "activeTab" : ""}
-                            onClick={() => setSelectedTab(tab.key)}
+                            className={selectedTab === tab.key ? 'activeTab' : ''}
+                            onClick={() => {
+                                setSelectedTab(tab.key)
+                                setMobileOpen(false) // auto-close on mobile
+                            }}
                         >
                             {tab.label}
                         </li>
                     ))}
                 </ul>
             </aside>
+
+
+            {/*<aside className="sidebar">*/}
+            {/*    /!*<h2 className="company-name" >Rishov Medical</h2>*!/*/}
+            {/*    <ul>*/}
+            {/*        {tabs.map(tab => (*/}
+            {/*            <li*/}
+            {/*                key={tab.key}*/}
+            {/*                className={selectedTab === tab.key ? "activeTab" : ""}*/}
+            {/*                onClick={() => setSelectedTab(tab.key)}*/}
+            {/*            >*/}
+            {/*                {tab.label}*/}
+            {/*            </li>*/}
+            {/*        ))}*/}
+            {/*    </ul>*/}
+            {/*</aside>*/}
 
             <main>
                 {selectedTab === 'update' && <FileUploader adminId={loginDetails.userId}/>}
