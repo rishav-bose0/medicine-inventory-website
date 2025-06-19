@@ -20,6 +20,18 @@
     border: 1px solid #888;
     border-radius: 25px;
     width: 55%;
+
+    max-height: 70vh;
+    overflow-x: scroll;
+
+    @media (max-width: 575px) {
+        width: 80% !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
 
 /* The Close Button */
@@ -28,6 +40,8 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+
+    align-self: flex-end;
 }
 
 .close:hover,
@@ -61,8 +75,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
     align-items: center;
+
+    @media (min-width: 576px) {
+        gap: 10px;
+    }
 }
 
 .order-confirmed-primary-text{
@@ -70,6 +87,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    @media (max-width: 575px) {
+        font-size: 20px !important;
+    }
 }
 
 .order-confirmed-secondary-text{
@@ -80,12 +101,24 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    @media (max-width: 575px) {
+        font-size: 15px !important;
+    }
 }
 
 .order-confirmed-container img{
-    width: 370px;
+    @media (max-width: 575px) {
+        width: 250px;
+    }
+
+    @media (min-width: 576px) {
+        width: 370px;
+    }
 }
 
-.w-50{
-    width: 50% !important;
+.w-lg-50{
+    @media (min-width: 576px) {
+        width: 50% !important;
+    }
 }

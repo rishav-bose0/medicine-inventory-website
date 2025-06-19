@@ -73,27 +73,6 @@ const NonAdminHomePage = () => {
                 </ul>
             </aside>
 
-
-            {/*<aside className="sidebar">*/}
-            {/*    <h2 className="company-name" >{loginDetails.companyName}</h2>*/}
-            {/*    <ul>*/}
-            {/*        {tabs.map(tab => (*/}
-            {/*            <li*/}
-            {/*                key={tab.key}*/}
-            {/*                className={selectedTab === tab.key ? "activeTab" : ""}*/}
-            {/*                onClick={() => {*/}
-            {/*                    setSelectedTab(tab.key)*/}
-            {/*                    if (tab.key === 'logout') {*/}
-            {/*                        handleLogoutClick();*/}
-            {/*                    }*/}
-            {/*                }}*/}
-            {/*            >*/}
-            {/*                {tab.label}*/}
-            {/*            </li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</aside>*/}
-
             <main>
                 {selectedTab === 'order' && <OrderMedicines companyDetails={loginDetails}/>}
                 {selectedTab === 'orders' && <OrdersList userId={loginDetails.userId}/>}
@@ -128,6 +107,11 @@ function OrderMedicines({companyDetails}) {
         setOpenOrderModal(!openOrderModal);
     }
 
+    function handleOrderCompletion(){
+        setQuantities({});
+        setOpenOrderModal(!openOrderModal);
+    }
+
     const handleQtyChange = (stockId, name, field, value) => {
         setQuantities(prev => {
             // 1. Clone the existing fields for this name (or start fresh)
@@ -144,7 +128,7 @@ function OrderMedicines({companyDetails}) {
             const next = {...prev};
 
             // 4. If after deletion there's nothing left, remove the whole name
-            if (Object.keys(current).length > 0) {
+            if(Object.keys(current).includes("box") || Object.keys(current).includes("strip")){
                 next[name] = current;
                 next[name]["internal_idx"]= stockId;
             } else {
@@ -222,7 +206,7 @@ function OrderMedicines({companyDetails}) {
             {
                 openOrderModal &&
                 <PlaceOrderModal companyDetails={companyDetails} selectedStocks={quantities} onCloseModal={togglePlaceOrderModal}
-                                 onQuantityChange={handleQtyChange}/>
+                                 onQuantityChange={handleQtyChange} onOrderComplete={handleOrderCompletion}/>
             }
         </>
 

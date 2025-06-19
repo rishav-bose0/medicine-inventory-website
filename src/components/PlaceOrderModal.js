@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import orderSuccess from "../assets/test-order.png";
 import {addOrder} from "../externalCalls/ApiAction";
 
-const PlaceOrderModal = ({companyDetails, selectedStocks, onCloseModal, onQuantityChange}) => {
+const PlaceOrderModal = ({companyDetails, selectedStocks, onCloseModal, onQuantityChange, onOrderComplete}) => {
     // useEffect(()=>{
     //     filtered = selectedStocks.filter(name =>
     //         name.toLowerCase()
@@ -20,13 +20,13 @@ const PlaceOrderModal = ({companyDetails, selectedStocks, onCloseModal, onQuanti
     return (
         <>
             <div id="myModal" className="modal">
-                <div className={orderConfirmed ? "modal-content w-50" : "modal-content"}>
+                <div className={orderConfirmed ? "modal-content w-lg-50" : "modal-content"}>
                     <span className="close" onClick={onCloseModal}>&times;</span>
 
                     {!orderConfirmed &&
                         <>
                             <h2 style={{textAlign: 'center'}}>Your Order</h2>
-                            <table>
+                            <table className="table-view">
                                 <thead>
                                 <tr>
                                     <th>Medicine Name</th>
@@ -81,7 +81,7 @@ const PlaceOrderModal = ({companyDetails, selectedStocks, onCloseModal, onQuanti
                             <img src={orderSuccess}/>
 
                             <div className="place-order-modal-btn">
-                                <button onClick={onCloseModal}>Done</button>
+                                <button onClick={onOrderComplete}>Done</button>
                             </div>
                         </div>
                     }

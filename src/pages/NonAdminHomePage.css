@@ -84,7 +84,7 @@ main {
 }
 
 table {
-    /*width: 100%;*/
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -117,16 +117,27 @@ tr:nth-of-type(even) {
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
-    position: fixed;
+    position: relative;
     bottom: 0;
-    width: 73vw;
+    /*width: 75vw;*/
+
+    flex: 1 1 auto;
+    /*width: 100%;*/
+
+    @media (max-width: 575px) {
+        width: 84vw !important;
+    }
 }
 
 
 .medicine-list-container{
     display: flex;
     flex-direction: column;
-    height: 88vh;
+    height: 90vh;
+
+    @media (max-width: 575px) {
+        height: 80vh !important;
+    }
 }
 
 /* search sits at top and never scrolls */
