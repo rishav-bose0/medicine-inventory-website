@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {getParticularOrderDetails} from "../externalCalls/ApiAction";
-import "./ParticularOrderDetailsModal.css";
+import "../pages/ParticularOrderDetailsModal.css";
 const ParticularOrderDetailsModal = ({orderDetails, onCloseModal}) => {
 
     const [orderedStockList, setOrderedStockList] = useState([]);

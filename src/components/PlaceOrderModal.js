@@ -1,4 +1,4 @@
-import "./PlaceOrderModal.css"
+import "../pages/PlaceOrderModal.css"
 import React, {useEffect, useState} from "react";
 import orderSuccess from "../assets/test-order.png";
 import {addOrder} from "../externalCalls/ApiAction";

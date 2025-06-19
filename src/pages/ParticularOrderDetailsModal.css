@@ -22,7 +22,7 @@
 
 .table-view{
     @media (max-width: 575px) {
-        width: 95%;
+        width: 95% !important;
         table-layout: fixed;
         font-size: 12px;
     }

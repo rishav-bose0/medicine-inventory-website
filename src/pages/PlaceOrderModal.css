@@ -122,3 +122,11 @@
         width: 50% !important;
     }
 }
+
+.table-view{
+    @media (max-width: 575px) {
+        width: 95%;
+        table-layout: fixed;
+        font-size: 12px;
+    }
+}
