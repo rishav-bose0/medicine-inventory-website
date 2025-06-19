@@ -125,8 +125,11 @@
 
 .table-view{
     @media (max-width: 575px) {
-        width: 95%;
+        /*width: 95%;*/
         table-layout: fixed;
         font-size: 12px;
+
+        margin: 0 !important;
+        width: 100% !important;
     }
 }

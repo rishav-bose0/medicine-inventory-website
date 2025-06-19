@@ -32,7 +32,8 @@ export async function addOrder(user_id, orders) {
 }
 
 export async function getMyOrders(userId) {
-    let url = `${baseUrl}/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
+    // let url = `${baseUrl}/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
+    let url = `http://127.0.0.1:5005/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -162,6 +163,60 @@ export async function updateStockDetail(file, userId){
             'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
         },
         body: formData,
+    });
+
+    if (!response.ok) {
+        return null
+    }
+
+    if (response.status !== 200) {
+        return null
+    }
+
+    return response.json();
+}
+
+export async function adminLoginApiCall(adminId, password){
+    const data = {
+        admin_id: adminId,
+        password: password,
+    }
+
+    const response = await fetch('http://127.0.0.1:5005' + "/admin_login", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        return null
+    }
+
+    if (response.status !== 200) {
+        return null
+    }
+
+    return response.json();
+}
+
+export async function updateStockStatus(orderId, status){
+    const data = {
+        order_id: orderId,
+        status: status,
+    }
+
+    const response = await fetch('http://127.0.0.1:5005' + "/update_stock_status", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+        },
+        body: JSON.stringify(data),
     });
 
     if (!response.ok) {

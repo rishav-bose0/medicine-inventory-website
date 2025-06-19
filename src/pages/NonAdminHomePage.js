@@ -3,8 +3,9 @@ import "./NonAdminHomePage.css"
 import PlaceOrderModal from "../components/PlaceOrderModal";
 import comingSoon from "../assets/26691.png";
 import {getStockList} from "../externalCalls/ApiAction";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import OrdersList from "../components/OrdersList";
+import {useAuth} from "./context/AuthContext";
 
 const tabs = [
     {key: 'order', label: 'Order Medicines'},
@@ -20,12 +21,18 @@ const NonAdminHomePage = () => {
     const [mobileOpen, setMobileOpen] = useState(false)
 
 
-    const location = useLocation();
-    const { loginDetails } = location.state || {};
+    // const location = useLocation();
+    // const { loginDetails } = location.state || {};
+
+    const { user } = useAuth()
+
     const navigate = useNavigate();
+
+    const { logout } = useAuth();
 
 
     const handleLogoutClick = () => {
+        logout();
         navigate('/', { replace: true });
     };
 
@@ -41,7 +48,7 @@ const NonAdminHomePage = () => {
                 >
                     ☰
                 </button>
-                <h2 className="company-name">{loginDetails.companyName}</h2>
+                <h2 className="company-name">{user.companyName}</h2>
             </header>
 
             {/* backdrop: only when menu is open */}
@@ -53,7 +60,7 @@ const NonAdminHomePage = () => {
             )}
 
             <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
-                <h2 className={`company-name ${mobileOpen ? 'hide' : ''}`}>{loginDetails.companyName}</h2>
+                <h2 className={`company-name ${mobileOpen ? 'hide' : ''}`}>{user.companyName}</h2>
                 <ul>
                     {tabs.map(tab => (
                         <li
@@ -74,8 +81,8 @@ const NonAdminHomePage = () => {
             </aside>
 
             <main>
-                {selectedTab === 'order' && <OrderMedicines companyDetails={loginDetails}/>}
-                {selectedTab === 'orders' && <OrdersList userId={loginDetails.userId}/>}
+                {selectedTab === 'order' && <OrderMedicines companyDetails={user}/>}
+                {selectedTab === 'orders' && <OrdersList user={user}/>}
                 {selectedTab === 'cart' && <MyCart/>}
                 {selectedTab === 'logout'}
             </main>
@@ -216,7 +223,7 @@ function OrderMedicines({companyDetails}) {
 function MyCart(){
     return (
         <div className="cart-container">
-            <img src={comingSoon}/>
+            <img src={comingSoon} alt="Coming soon"/>
         </div>
     )
 }
