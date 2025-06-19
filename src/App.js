@@ -16,9 +16,6 @@ function App() {
               <Routes>
                   <Route path="/" element={<LandingPage />} />
                   <Route path="/adminLogin" element={<AdminLandingPage />} />
-                  {/*<Route path="home" element={<NonAdminHomePage/>} />*/}
-                  {/*<Route path="admin" element={<AdminHomePage/>} />*/}
-
                   <Route element={<ProtectedRoutes />}>
                       <Route element={<AdminProtectedRoutes />}>
                         <Route path="/admin" element={<AdminHomePage />} />

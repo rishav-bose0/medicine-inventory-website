@@ -32,8 +32,7 @@ export async function addOrder(user_id, orders) {
 }
 
 export async function getMyOrders(userId) {
-    // let url = `${baseUrl}/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
-    let url = `http://127.0.0.1:5005/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
+    let url = `${baseUrl}/fetch_orders_list` + (userId !== undefined ? `?user_id=${userId}` : '');
     const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -74,18 +73,8 @@ export async function getParticularOrderDetails(order_id) {
         return null
     }
 
-    // console.log(response.order_details)
     return response.json();
 }
-
-// fetch('http://127.0.0.1:5005/get_all_stocks')
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data);
-//         setStockList(data.stock_list || []);
-//     })
-//     .catch(console.error);
-
 
 export async function getStockList() {
 
@@ -112,9 +101,6 @@ export async function getStockList() {
     console.log(res_json);
     return res_json;
 }
-
-// 'company_name': companyName,
-//             'phone_number': phoneNumber
 
 export async function login(companyName, phoneNumber){
     const data = {
@@ -182,7 +168,7 @@ export async function adminLoginApiCall(adminId, password){
         password: password,
     }
 
-    const response = await fetch('http://127.0.0.1:5005' + "/admin_login", {
+    const response = await fetch(`${baseUrl}/admin_login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -209,7 +195,7 @@ export async function updateStockStatus(orderId, status){
         status: status,
     }
 
-    const response = await fetch('http://127.0.0.1:5005' + "/update_stock_status", {
+    const response = await fetch(`${baseUrl}/update_stock_status`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -20,10 +20,6 @@ const NonAdminHomePage = () => {
 
     const [mobileOpen, setMobileOpen] = useState(false)
 
-
-    // const location = useLocation();
-    // const { loginDetails } = location.state || {};
-
     const { user } = useAuth()
 
     const navigate = useNavigate();

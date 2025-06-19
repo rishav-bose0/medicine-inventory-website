@@ -28,8 +28,6 @@ export const AuthProvider = ({children}) => {
     }
 
     const isAuthenticated = Boolean(token)
-    // const isAdmin = Boolean(user.is_admin)
-
     return (
         <AuthContext.Provider value={{isAuthenticated, user,  login, logout}}>
             {children}

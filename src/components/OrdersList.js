@@ -91,6 +91,7 @@ const OrdersList = ({user}) => {
                                 <td>
 
                                     <select
+                                        onClick={e => e.stopPropagation()}
                                         value={item.order_list_info.order_status}
                                         onChange={e =>
                                             updateOrder(item.idx, item.order_list_info.order_id, e.target.value)
