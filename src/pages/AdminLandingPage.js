@@ -3,28 +3,37 @@ import './LandingPage.css';
 import medicineImg from "../assets/medicine.png"
 import CompanyPicker from "../components/CompanyPicker";
 import {useState} from "react";
-import {login as loginApiCall} from "../externalCalls/ApiAction";
+import {adminLoginApiCall, login as loginApiCall} from "../externalCalls/ApiAction";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "./context/AuthContext";
 
-const LandingPage = () => {
+const AdminLandingPage = () => {
 
-    const [companyName, setCompanyName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [adminId, setAdminId] = useState('');
+    const [adminPassword, setAdminPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const {login} = useAuth();
+    const { login } = useAuth();
 
     const loginAction = () => {
-        loginApiCall(companyName, phoneNumber).then((res) => {
+        adminLoginApiCall(adminId, adminPassword).then((res) => {
             console.log(res);
 
-            res['companyName'] = companyName
-            res['isAdmin'] = false
+            if(res.error){
+                setError(res.error);
+                return;
+            }
+
+            res['companyName'] = 'Rishov Medical';
 
             login(res);
-            navigate("/home");
 
+            if (res.is_admin) {
+                navigate("/admin");
+            } else {
+                setError('Not an Admin credential.')
+            }
         })
     }
 
@@ -36,9 +45,7 @@ const LandingPage = () => {
                     <span>Rishov Medical</span>
                 </div>
                 <div className="navbar-links">
-                    <a href="#">Home</a>
-                    {/*<Link to="/AdminHomePage">Home</Link>*/}
-                    {/*<a href="#">Contact Us</a>*/}
+                    <a href="/">Home</a>
                 </div>
             </div>
 
@@ -55,20 +62,17 @@ const LandingPage = () => {
                     </div>
                 </div>
                 <div className="login-form">
-                    <span className="form-header">LOGIN</span>
+                    <span className="form-header"><span style={{color: '#D64779'}}>ADMIN</span> LOGIN</span>
                     <div className="form-details">
-                        {/*<div className="input-fields">*/}
-                        {/*    <input type="name" placeholder="Company Name"/>*/}
-                        {/*</div>*/}
-                        <CompanyPicker
-                            value={companyName}
-                            onChange={setCompanyName}
-                        />
                         <div className="home-input-fields">
-                            <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
-                                   placeholder="Phone Number"/>
+                            <input type="text" value={adminId} onChange={(e)=>setAdminId(e.target.value)} placeholder="Admin ID"/>
+                        </div>
+
+                        <div className="home-input-fields">
+                            <input type="password" value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)} placeholder="Password"/>
                         </div>
                     </div>
+                    {error && <span style={{color: 'red', fontWeight:800}}>{error}</span>}
                     <button className="submit-btn" onClick={loginAction}>Submit</button>
                 </div>
             </div>
@@ -76,4 +80,4 @@ const LandingPage = () => {
     );
 }
 
-export default LandingPage;
+export default AdminLandingPage;
