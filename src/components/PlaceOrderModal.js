@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import orderSuccess from "../assets/test-order.png";
 import {addOrder} from "../externalCalls/ApiAction";
 
-const PlaceOrderModal = ({companyDetails, selectedStocks, onCloseModal, onQuantityChange, onOrderComplete}) => {
+const PlaceOrderModal = ({userDetails, selectedStocks, onCloseModal, onQuantityChange, onOrderComplete}) => {
     // useEffect(()=>{
     //     filtered = selectedStocks.filter(name =>
     //         name.toLowerCase()
@@ -13,7 +13,7 @@ const PlaceOrderModal = ({companyDetails, selectedStocks, onCloseModal, onQuanti
     console.log(selectedStocks);
 
     function confirmOrder() {
-        addOrder(companyDetails.userId, Object.values(selectedStocks));
+        addOrder(userDetails.id, Object.values(selectedStocks));
         setOrderConfirmed(true);
     }
 

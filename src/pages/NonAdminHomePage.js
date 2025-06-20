@@ -77,7 +77,7 @@ const NonAdminHomePage = () => {
             </aside>
 
             <main>
-                {selectedTab === 'order' && <OrderMedicines companyDetails={user}/>}
+                {selectedTab === 'order' && <OrderMedicines userDetails={user}/>}
                 {selectedTab === 'orders' && <OrdersList user={user}/>}
                 {selectedTab === 'cart' && <MyCart/>}
                 {selectedTab === 'logout'}
@@ -86,7 +86,7 @@ const NonAdminHomePage = () => {
     );
 }
 
-function OrderMedicines({companyDetails}) {
+function OrderMedicines({userDetails}) {
     const [stockList, setStockList] = useState([]);
     const [search, setSearch] = useState('');
     const [quantities, setQuantities] = useState({});
@@ -208,7 +208,7 @@ function OrderMedicines({companyDetails}) {
             </div>
             {
                 openOrderModal &&
-                <PlaceOrderModal companyDetails={companyDetails} selectedStocks={quantities} onCloseModal={togglePlaceOrderModal}
+                <PlaceOrderModal userDetails={userDetails} selectedStocks={quantities} onCloseModal={togglePlaceOrderModal}
                                  onQuantityChange={handleQtyChange} onOrderComplete={handleOrderCompletion}/>
             }
         </>
