@@ -198,14 +198,13 @@ function OrderMedicines({userDetails}) {
                         </tbody>
                     </table>
                 </div>
-
-                {
-                    Object.keys(quantities).length !== 0 &&
-                    <div className="place-order-btn" onClick={togglePlaceOrderModal}>
-                        <span>Place Order</span>
-                    </div>
-                }
             </div>
+            {
+                Object.keys(quantities).length !== 0 &&
+                <div className="place-order-btn" onClick={togglePlaceOrderModal}>
+                    <span>Place Order</span>
+                </div>
+            }
             {
                 openOrderModal &&
                 <PlaceOrderModal userDetails={userDetails} selectedStocks={quantities} onCloseModal={togglePlaceOrderModal}
