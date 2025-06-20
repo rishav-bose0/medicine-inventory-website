@@ -39,7 +39,7 @@
     align-items: center;
 }
 
-.navbar-links a{
+.navbar-links a, .navbar-links div{
     text-decoration: none;
     color: var(--Primary, #0D0D0D);
     leading-trim: both;
@@ -52,6 +52,7 @@
     font-weight: 400;
     line-height: 100%; /* 16px */
     letter-spacing: 0.16px;
+    cursor: pointer;
 }
 
 .body-container{
