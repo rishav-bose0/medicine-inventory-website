@@ -2,7 +2,9 @@ import React, {useRef, useState} from 'react';
 import {updateStockDetail} from "../externalCalls/ApiAction";
 
 const FileUploader = ({adminId}) => {
+    const [isLoading, setIsLoading] = useState(false);
     const [file, setFile] = useState(null);
+    const [uploadMessage, setUploadMessage] = useState(null);
     const inputRef = useRef(null);
 
     const handleFileChange = (e) => {
@@ -16,12 +18,14 @@ const FileUploader = ({adminId}) => {
     }
 
     const updateStockList = () => {
+        setIsLoading(true);
         updateStockDetail(file, adminId).then((res)=> {
+            setIsLoading(false);
             if(res.success){
-                alert("Stocks Successfully Updated");
+                setUploadMessage("Stocks Successfully Updated!!");
                 handleRemove();
             } else {
-                alert("Error Occurred. Try Again!");
+                alert("Error!!. Try Again!");
             }
         }
         )
@@ -29,6 +33,9 @@ const FileUploader = ({adminId}) => {
 
     return (
         <div style={styles.container}>
+            {uploadMessage &&
+                <p style={{color: 'green', fontSize:'20px', fontWeight: '700'}}>{uploadMessage}</p>
+            }
             <label style={styles.uploadBox}>
                 <input
                     type="file"
@@ -58,6 +65,9 @@ const FileUploader = ({adminId}) => {
                     <button style={styles.updateButton} onClick={updateStockList}>Update Your Stock List</button>
                 </>
             )}
+            {isLoading &&
+                <div style={styles.processingContainer}>Processing...</div>
+            }
         </div>
     );
 };
@@ -138,6 +148,17 @@ const styles = {
         fontSize: 20,
         fontWeight: 900,
         cursor: 'pointer'
+    },
+    processingContainer: {
+        color: 'green',
+        fontSize: 20,
+        fontWeight: 600,
+        padding: '6px',
+        marginTop: '20px',
+        border: '1px solid green',
+        background: 'white',
+        borderRadius: 20,
+        textAlign: 'center'
     }
 };
 

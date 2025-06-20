@@ -37,6 +37,8 @@ const LandingPage = () => {
                 </div>
                 <div className="navbar-links">
                     <a href="#">Home</a>
+                    <div onClick={()=>navigate("/adminLogin")}>Admin</div>
+                    {/*<a href="/adminLogin">Admin</a>*/}
                     {/*<Link to="/AdminHomePage">Home</Link>*/}
                     {/*<a href="#">Contact Us</a>*/}
                 </div>
@@ -47,8 +49,7 @@ const LandingPage = () => {
                     <div className="mobile-adjust-view">
                         <p className="primary-header">Medicine Store</p>
                         <p className="secondary-header">Your Trusted Pharmacy Store</p>
-                        <p className="detail">Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit
-                            nulla. Nullam vitae sit tempus diam.</p>
+                        <p className="detail">For Stocklist, Wholesalers, Retailers. <br/>Login with your Company Name and Phone Number. <br/>Check out my stocks. Stocks can be ordered online.</p>
                     </div>
                     <div className="medicine-img-container">
                         <img src={medicineImg} alt="medicine-kit-image"/>

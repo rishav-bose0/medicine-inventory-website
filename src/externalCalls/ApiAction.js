@@ -131,23 +131,13 @@ export async function login(companyName, phoneNumber){
 
 export async function updateStockDetail(file, userId){
 
-    const { uri, name, mimeType } = file;
     const formData = new FormData();
 
-    formData.append('file', {
-        uri,
-        name,
-        type: mimeType || 'application/octet-stream',
-    });
+    formData.append('file', file);
     formData.append('adminId', userId);
 
     const response = await fetch(baseUrl + "/update_stock_details", {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-        },
         body: formData,
     });
 
