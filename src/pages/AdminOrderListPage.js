@@ -22,7 +22,7 @@ const AdminOrderListPage = ({user}) => {
 
     useEffect(() => {
         // setIsLoading(true);
-        getMyOrders('QTBSCcs7md0GUx').then((res) => {
+        getMyOrders(user.id).then((res) => {
             // setIsLoading(false);
             const allOrders = res.orders;
             console.log(allOrders.map((order_list_info, idx) => ({order_list_info, idx})));
@@ -104,46 +104,6 @@ const AdminOrderListPage = ({user}) => {
                     </thead>
                     <tbody>
 
-                    {/*{ordersList.map(item => (*/}
-                    {/*    <tr key={item.order_list_info.order_id} onClick={() => {*/}
-                    {/*        setOrderIdToView({*/}
-                    {/*            orderId: item.order_list_info.order_id,*/}
-                    {/*            orderDate: item.order_list_info.order_date*/}
-                    {/*        });*/}
-                    {/*        setOpenViewOrderModal(true);*/}
-                    {/*    }}*/}
-                    {/*    >*/}
-                    {/*        <td>{item.order_list_info.user_name}</td>*/}
-                    {/*        <td>{item.order_list_info.phone_number}</td>*/}
-                    {/*        <td>{item.order_list_info.order_id}</td>*/}
-                    {/*        <td>*/}
-                    {/*            {new Date(item.order_list_info.order_date * 1000)*/}
-                    {/*                .toLocaleDateString('en-GB', {day: '2-digit', month: '2-digit', year: '2-digit'})}*/}
-                    {/*        </td>*/}
-
-                    {/*        <td>*/}
-
-                    {/*            <select*/}
-                    {/*                onClick={e => e.stopPropagation()}*/}
-                    {/*                value={item.order_list_info.order_status}*/}
-                    {/*                onChange={e =>*/}
-                    {/*                    updateOrder(item.idx, item.order_list_info.order_id, e.target.value)*/}
-                    {/*                }*/}
-                    {/*                className="order-status-dropdown"*/}
-                    {/*            >*/}
-                    {/*                <option value="" disabled>*/}
-                    {/*                    Select status…*/}
-                    {/*                </option>*/}
-                    {/*                {validOrderStatusOptions.map(status => (*/}
-                    {/*                    <option key={status} value={status}>*/}
-                    {/*                        {status}*/}
-                    {/*                    </option>*/}
-                    {/*                ))}*/}
-                    {/*            </select>*/}
-                    {/*        </td>*/}
-
-                    {/*    </tr>*/}
-                    {/*))}*/}
                     {displayed.map(item => (
                         <tr
                             key={item.order_list_info.order_id}
