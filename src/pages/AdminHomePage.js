@@ -3,6 +3,7 @@ import FileUploader from "../components/FileUploader";
 import OrdersList from "../components/OrdersList";
 import {getStockList} from "../externalCalls/ApiAction";
 import {useAuth} from "./context/AuthContext";
+import AdminOrderListPage from "./AdminOrderListPage";
 
 const tabs = [
     {key: 'update', label: 'Update StockList'},
@@ -60,7 +61,8 @@ const AdminHomePage = () => {
 
             <main>
                 {selectedTab === 'update' && <FileUploader adminId={user.id}/>}
-                {selectedTab === 'orders' && <OrdersList user={user}/>}
+                {/*{selectedTab === 'orders' && <OrdersList user={user}/>}*/}
+                {selectedTab === 'orders' && <AdminOrderListPage/>}
                 {selectedTab === 'viewStocks' && <ViewStockList/>}
             </main>
         </div>

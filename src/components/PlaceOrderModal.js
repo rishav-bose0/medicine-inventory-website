@@ -78,18 +78,18 @@ const PlaceOrderModal = ({userDetails, selectedStocks, onCloseModal, onQuantityC
                         <div className="order-confirmed-container">
                             <p className="order-confirmed-primary-text">Your Order is confirmed</p>
                             <p className="order-confirmed-secondary-text">Thank you for ordering with us.</p>
-                            <img src={orderSuccess}/>
+                            <img className="order-confirmed-container-img" src={orderSuccess}/>
 
                             <div className="place-order-modal-btn">
                                 <button onClick={onOrderComplete}>Done</button>
                             </div>
                         </div>
                     }
-
                 </div>
             </div>
         </>
     )
-}
+};
+
 
 export default PlaceOrderModal;
