@@ -61,7 +61,7 @@ const AdminHomePage = () => {
 
             <main>
                 {selectedTab === 'update' && <FileUploader adminId={user.id}/>}
-                {selectedTab === 'orders' && <AdminOrderListPage/>}
+                {selectedTab === 'orders' && <AdminOrderListPage user={user}/>}
                 {selectedTab === 'viewStocks' && <ViewStockList/>}
             </main>
         </div>

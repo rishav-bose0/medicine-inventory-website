@@ -12,19 +12,6 @@
     backdrop-filter: blur(3px);
 }
 
-/*!* Modal Content *!*/
-/*.modal-content {*/
-/*    background-color: #fefefe;*/
-/*    margin: auto;*/
-/*    padding: 20px;*/
-/*    border: 1px solid #888;*/
-/*    border-radius: 25px;*/
-/*    width: 55%;*/
-
-/*    max-height: 70vh;*/
-/*    overflow-x: scroll;*/
-/*}*/
-
 /*!* The Close Button *!*/
 .close {
     color: #aaaaaa;
@@ -61,58 +48,6 @@
     cursor: pointer;
     font-size: 16px;
 }
-
-/*.order-confirmed-container{*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-
-/*    @media (min-width: 576px) {*/
-/*        gap: 10px;*/
-/*    }*/
-/*}*/
-
-/*.order-confirmed-primary-text{*/
-/*    font-size: 25px;*/
-/*    font-style: normal;*/
-/*    font-weight: 700;*/
-/*    line-height: normal;*/
-
-/*    @media (max-width: 575px) {*/
-/*        font-size: 20px !important;*/
-/*    }*/
-/*}*/
-
-/*.order-confirmed-secondary-text{*/
-/*    text-align: center;*/
-/*    color: #000;*/
-/*    font-family: Roboto;*/
-/*    font-size: 18px;*/
-/*    font-style: normal;*/
-/*    font-weight: 700;*/
-/*    line-height: normal;*/
-
-/*    !*@media (max-width: 575px) {*!*/
-/*    !*    font-size: 15px !important;*!*/
-/*    !*}*!*/
-/*}*/
-
-/*.order-confirmed-container-img{*/
-/*    !*@media (max-width: 575px) {*!*/
-/*    !*    width: 250px !important;*!*/
-/*    !*}*!*/
-
-/*    @media (min-width: 576px) {*/
-/*        width: 370px !important;;*/
-/*    }*/
-/*}*/
-
-/*.w-lg-50{*/
-/*    @media (min-width: 576px) {*/
-/*        width: 50% !important;*/
-/*    }*/
-/*}*/
 
 
 @media (min-width: 576px) {
